@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Mi Proyecto Django</title>
+    <style>
+        :root {
+            --neon: #39FF14;
+            --bg: #050505;
+            --surface: #121212;
+            --text: #e0e0e0;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 5%;
+            border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+        }
+        nav a { color: var(--text); text-decoration: none; margin-left: 20px; }
+        
+        .container {
+            max-width: 500px;
+            margin: 60px auto;
+            padding: 40px;
+            background: var(--surface);
+            border-radius: 10px;
+            border: 1px solid #222;
+        }
+        h2 { color: var(--neon); margin-top: 0; }
+
+        /* Estilos de Formulario - Ley de Región Común */
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-size: 0.8rem;
+            color: var(--neon);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        input, textarea {
+            background: #000;
+            border: 1px solid #333;
+            padding: 12px;
+            color: white;
+            border-radius: 4px;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus, textarea:focus {
+            border-color: var(--neon);
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+        }
+        button {
+            background: transparent;
+            color: var(--neon);
+            border: 2px solid var(--neon);
+            padding: 15px;
+            width: 100%;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: var(--neon);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div style="color: var(--neon); font-weight: 900;">DJANGO_DEV</div>
+        <div>
+            <a href="/">Inicio</a>
+            <a href="#">Contacto</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>ESTABLECER_CONEXIÓN</h2>
+        <p style="color: #888; font-size: 0.9rem;">Envía un mensaje al servidor central.</p>
+        
+        <form>
+            <div class="form-group">
+                <label>Identificación (Nombre)</label>
+                <input type="text" placeholder="Ej: Neo">
+            </div>
+            <div class="form-group">
+                <label>Canal (Email)</label>
+                <input type="email" placeholder="nombre@dominio.com">
+            </div>
+            <div class="form-group">
+                <label>Mensaje</label>
+                <textarea rows="4" placeholder="Escribe aquí..."></textarea>
+            </div>
+            <button type="submit">Transmitir Datos</button>
+        </form>
+    </div>
+    <footer>
+        <p>(c) 2026 DJANGO_DEV - Todos los derechos reservados</p>
+        <a href="{%url 'home'%}" target="_blank" rel="noopener noreferrer">click aqui</a>
+    </footer>
+</body>
+</html>

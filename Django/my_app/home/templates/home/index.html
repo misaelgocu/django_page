@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Mi Proyecto Django</title>
+    <style>
+        :root {
+            --neon: #39FF14;
+            --bg: #050505;
+            --surface: #121212;
+            --text: #e0e0e0;
+            --gray: #888;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        /* Navbar - Ley de Jakob (Posición familiar) */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 5%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+            position: sticky;
+            top: 0;
+        }
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        nav a:hover { color: var(--neon); }
+
+        /* Hero Section - Jerarquía Visual */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+        .hero span {
+            color: var(--neon);
+            text-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+        }
+        .hero p {
+            color: var(--gray);
+            max-width: 600px;
+            font-size: 1.2rem;
+            margin: 20px 0 40px;
+        }
+
+        /* Botón - Ley de Fitts (Grande y fácil de clickear) */
+        .cta-button {
+            background: var(--neon);
+            color: black;
+            padding: 18px 35px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+            transition: 0.3s;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px var(--neon);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div style="color: var(--neon); font-weight: 900;">DJANGO_DEV</div>
+        <div>
+            <a href="#">Inicio</a>
+            <a href="/contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <main class="hero">
+        <h1>BUILDING <span>FUTURE</span></h1>
+        <p>Desarrollo backend robusto con Python. Creamos sistemas escalables bajo una estética cyberpunk de alto rendimiento.</p>
+        <a href="/contacto" class="cta-button">Empezar ahora</a>
+    </main>
+    <footer>
+        <p>(c) 2026 DJANGO_DEV - Todos los derechos reservados</p>
+        <a href="{%url 'contacto'%}" target="_blank" rel="noopener noreferrer">click aqui</a>
+    </footer>
+</body>
+</html>
