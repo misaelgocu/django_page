@@ -8,7 +8,13 @@ class BlogPost(models.Model):
     content = models.TextField(verbose_name="Contenido o Resumen")
     url = models.URLField(max_length=500, verbose_name="Enlace externo")
     # Añadimos imagen opcional para que la UI de Bootstrap brille
-    image_url = models.URLField(max_length=500, blank=True, null=True, verbose_name="URL de Imagen", default="logo.png" )
+    image_url = models.CharField(
+        max_length=500,
+        blank=True,
+        null=True,
+        verbose_name="URL de Imagen",
+        default="logo.png"
+        )
 
     class Meta:
         verbose_name = "Publicación"
