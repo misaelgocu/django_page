@@ -37,7 +37,7 @@ nav {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--neon);
+    color: var(--neon) !important;
     font-family: var(--font-accent);
     font-weight: 900;
     letter-spacing: 1px;
@@ -72,7 +72,6 @@ nav {
 }
 
 .navbar-toggler .navbar-toggler-icon{
-    color: var(--text) !important;
     font-weight: bold;
 }
 
@@ -149,6 +148,38 @@ nav {
     transform: translateY(-5px);
     box-shadow: 0 10px 40px var(--neon-soft);
     letter-spacing: 2px;
+}
+
+/* Botón de Tema Cyberpunk*** */
+.btn-theme-cyber {
+    background: transparent;
+    border: 1px solid var(--neon-soft);
+    color: var(--neon);
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.btn-theme-cyber:hover {
+    box-shadow: 0 0 10px var(--neon-soft);
+    border-color: var(--neon);
+}
+
+/* Lógica de iconos según el tema de Bootstrap */
+[data-bs-theme="dark"] .sun-icon { display: block; }
+[data-bs-theme="dark"] .moon-icon { display: none; }
+
+[data-bs-theme="light"] .sun-icon { display: none; }
+[data-bs-theme="light"] .moon-icon { display: block; color: #555; }
+
+/* Ajuste para que el icono de sol brille */
+.sun-icon {
+    filter: drop-shadow(0 0 5px var(--neon));
 }
 
 /* Footer */
