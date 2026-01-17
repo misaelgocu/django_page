@@ -20,7 +20,7 @@
                     {% if post.image_url %}
                         <img src="{{ post.image_url }}" class="card-img-top object-fit-cover" alt="{{ post.title }}">
                     {% else %}
-                        <img src="https://via.placeholder.com/400x225?text=Python+Blog" class="card-img-top" alt="Placeholder">
+                        <img src="{% static 'img/posts'  %}{{ post.image_url }}" class="card-img-top" alt="Placeholder">
                     {% endif %}
                 </div>
 
