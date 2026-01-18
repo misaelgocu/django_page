@@ -54,7 +54,7 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav-links mt-2">
               <li class="nav-item">
                 <a
-                  class="nav-link {% if request.path == '/' %} {% endif %}"
+                  class="nav-link {% if request.path == '/' %}active{% endif %}"
                   href="/"
                   >Inicio</a
                 >
@@ -65,6 +65,11 @@
                   href="/contacto"
                   >Contacto</a
                 >
+              </li>
+              <li>
+                <a class="nav-link {% if request.path == '/catalogo' %}active{% endif %}" href="/catalogo">
+                  Blog
+                </a>
               </li>
             </ul>
           </div>

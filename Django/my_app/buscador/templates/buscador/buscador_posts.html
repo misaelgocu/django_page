@@ -1,18 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Blog List{% endblock %}
+{% block title %}Buscador de Posts{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <div class="row mb-5">
-        <div class="col-12 text-center">
-            <h1 class="display-4 fw-bold ">Blog Posts</h1>
-            <p class="text-muted">Explora nuestras últimas noticias y tutoriales</p>
-            <hr class="w-25 mx-auto border-success border-2 opacity-75">
-        </div>
-    </div>
+<div class="container py-5 w-100 d-flex flex-column align-items-center">
+    <h2 class="mb-4 text-body">Resultados para "{{ query }}"</h2>
 
-<div class="row mb-5 justify-content-center">
+    <div class="row mb-5 justify-content-center w-100">
     <div class="col-11 col-sm-10 col-md-8 col-lg-5">
         <form method="GET" action="{% url 'buscador_posts' %}" method="get" role="search">
             <div class="input-group shadow-sm">
@@ -33,8 +27,7 @@
     </div>
 </div>
 
-    <div class="row g-4">
-        {% for post in blog_posts %}
+    {% for post in blog_posts %}
         <div class="col-12 col-md-6 col-lg-4">
             <article class="card h-100 shadow-sm border-0">
                 <div class="ratio ratio-16x9">
@@ -81,49 +74,16 @@
             </div>
         </div>
         {% endfor %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?q={{ query }}&page={{ page_obj.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?q={{ query }}&page={{ page_obj.next_page_number }}">Siguiente</a>
+        {% endif %}
     </div>
-
-    {% comment %} paginacion {% endcomment %}
-    <nav aria-label="Navegación de páginas" class="mt-5 d-flex justify-content-center w-100">
-        <ul class="pagination d-flex justify-content-center">
-            
-            {% if page_obj.has_previous %}
-                <li class="page-item">
-                    <a class="page-link text-success border-success" href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" aria-label="Anterior">
-                        <span aria-hidden="true">Anterior</span>
-                    </a>
-                </li>
-            {% else %}
-                <li class="page-item disabled">
-                    <span class="page-link text-muted border-light">Anterior</span>
-                </li>
-            {% endif %}
-
-            {% for num in page_obj.paginator.page_range %}
-                {% if page_obj.number == num %}
-                    <li class="page-item active">
-                        <span class="page-link bg-success border-success text-white">{{ num }}</span>
-                    </li>
-                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                    <li class="page-item">
-                        <a class="page-link text-success border-success" href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">{{ num }}</a>
-                    </li>
-                {% endif %}
-            {% endfor %}
-
-            {% if page_obj.has_next %}
-                <li class="page-item">
-                    <a class="page-link bg-success text-white border-success" href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" aria-label="Siguiente">
-                        <span aria-hidden="true">Siguiente</span>
-                    </a>
-                </li>
-            {% else %}
-                <li class="page-item disabled">
-                    <span class="page-link text-muted border-light">Siguiente</span>
-                </li>
-            {% endif %}
-
-        </ul>
-    </nav>
 </div>
 {% endblock %}
